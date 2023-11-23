@@ -12,12 +12,12 @@ def main():
     requiredNamed = parser.add_argument_group('required named arguments')
 
     requiredNamed.add_argument('-t', '--tess_path',
-                           help="path to the cmd root of tesseract install (see docs for further help)",
+                           help="path to the cmd root of tesseract install",
                            metavar='', required=False, default='C:\\Program Files\\Tesseract-OCR\\tesseract.exe')
 
 
     # Optional:
-    parser.add_argument('-c', '--crop', help="crop OCR area in pixels (two vals required): width height",
+    parser.add_argument('-c 500 300', '--crop', help="crop OCR area in pixels (two vals required): width height",
                         nargs=2, type=int, metavar='')
 
     parser.add_argument('-v', '--view_mode', help="view mode for OCR boxes display (default=1)",
@@ -26,7 +26,7 @@ def main():
                         action="store_true")
 
     parser.add_argument("-l", "--language",
-                        help="code for tesseract language, use + to add multiple (ex: chi_sim+chi_tra)",
+                        help="code for tesseract language, use + to add multiple",
                         metavar='', default=None)
     parser.add_argument("-sl", "--show_langs", help="show list of tesseract (4.0+) supported langs",
                         action="store_true")
@@ -49,10 +49,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    tess_path =  r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'  
-    view_mode = 1
-    source = 0
-    crop = [1024, 768]
-    language = "en"
-    OCR.ocr_stream(view_mode=view_mode, source=source, crop=crop, language=language)
