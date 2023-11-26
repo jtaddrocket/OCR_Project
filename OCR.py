@@ -169,16 +169,16 @@ class OCR:
 def capture_image(frame, captures=0):
 
     cwd_path = os.getcwd()
-    Path(cwd_path + '/images').mkdir(parents=False, exist_ok=True)
+    Path(cwd_path + '/Images').mkdir(parents=False, exist_ok=True)
 
     now = datetime.now()
-    # Example: "OCR 2021-04-8 at 12:26:21-1.jpg"  ...Handles multiple captures taken in the same second
-    name = "OCR " + now.strftime("%Y-%m-%d") + " at " + now.strftime("%H:%M:%S") + '-' + str(captures + 1) + '.jpg'
-    path = 'images/' + name
+    name = "OCR " + now.strftime("%Y-%m-%d at %H-%M-%S-%f")[:-3] + '-' + str(captures + 1) + '.jpg'
+    path = 'Images/' + name
     cv2.imwrite(path, frame)
     captures += 1
     print(name)
     return captures
+
 
 
 def views(mode: int, confidence: int):
@@ -232,7 +232,7 @@ def put_ocr_boxes(boxes, frame, height, crop_width=0, crop_height=0, view_mode=1
                         text = text + ' ' + word
 
         if text.isascii():  # CV2 is only able to display ascii chars at the moment
-            cv2.putText(frame, text, (5, height - 5), cv2.FONT_HERSHEY_DUPLEX, 1, (200, 200, 200))
+            cv2.putText(frame, text, (5, height - 5), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 255))
 
     return frame, text
 

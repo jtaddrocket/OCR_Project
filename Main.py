@@ -17,21 +17,15 @@ def main():
 
 
     # Optional:
-    parser.add_argument('-c 500 300', '--crop', help="crop OCR area in pixels (two vals required): width height",
-                        nargs=2, type=int, metavar='')
+    parser.add_argument('-c', '--crop', nargs=2, type=int, metavar='', default=[100, 100])
 
-    parser.add_argument('-v', '--view_mode', help="view mode for OCR boxes display (default=1)",
-                        default=1, type=int, metavar='')
-    parser.add_argument('-sv', '--show_views', help="show the available view modes and descriptions",
-                        action="store_true")
 
-    parser.add_argument("-l", "--language",
-                        help="code for tesseract language, use + to add multiple",
-                        metavar='', default=None)
-    parser.add_argument("-sl", "--show_langs", help="show list of tesseract (4.0+) supported langs",
-                        action="store_true")
-    parser.add_argument("-s", "--src", help="SRC video source for video capture",
-                        default=0, type=int)
+    parser.add_argument('-v', '--view_mode', default=1, type=int, metavar='')
+    parser.add_argument('-sv', '--show_views', action="store_true")
+
+    parser.add_argument("-l", "--language", metavar='', default=None)
+    parser.add_argument("-sl", "--show_langs", action="store_true")
+    parser.add_argument("-s", "--src", default=0, type=int)
 
     args = parser.parse_args()
 
