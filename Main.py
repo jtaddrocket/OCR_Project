@@ -20,10 +20,10 @@ def main():
     parser.add_argument('-c', '--crop', nargs=2, type=int, metavar='', default=[100, 100])
 
 
-    parser.add_argument('-v', '--view_mode', default=1, type=int, metavar='')
+    parser.add_argument('-v', '--view_mode', default=4, type=int, metavar='')
     parser.add_argument('-sv', '--show_views', action="store_true")
 
-    parser.add_argument("-l", "--language", metavar='', default=None)
+    parser.add_argument("-l", "--language", metavar='', default='eng')
     parser.add_argument("-sl", "--show_langs", action="store_true")
     parser.add_argument("-s", "--src", default=0, type=int)
 

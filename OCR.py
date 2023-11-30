@@ -126,19 +126,13 @@ class OCR:
         """
         self.language = language
 
-    def ocr(self):
-        """
-        Creates a process where frames are continuously grabbed from the exchange and processed by pytesseract OCR.
-        Output data from pytesseract is stored in the self.boxes attribute.
-        """
+    def ocr(self):    
         while not self.stopped:
-            if self.exchange is not None:  # Defends against an undefined VideoStream reference
+            if self.exchange is not None:  #Defends against an undefined VideoStream reference
                 frame = self.exchange.frame
 
-                # # # CUSTOM FRAME PRE-PROCESSING GOES HERE # # #
+                #CUSTOM FRAME PRE-PROCESSING GOES HERE 
                 frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
-                # frame = cv2.adaptiveThreshold(frame, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
-                # # # # # # # # # # # # # # # # # # # #
 
                 frame = frame[self.crop_height:(self.height - self.crop_height),
                               self.crop_width:(self.width - self.crop_width)]
